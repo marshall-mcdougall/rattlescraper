@@ -29,6 +29,7 @@ class Bin:
 	__longitude = ""
 	__latitude = ""
 	__name =""
+        __type = ""
 
 	def __init__(self, company, address, city, postalCode, longitude, latitude, name):
 		self.company = company
@@ -37,3 +38,29 @@ class Bin:
 		self.postalCode = postalCode
 		self.longitude = longitude
 		self.name = name
+        def getCompany()
+            return self.company
+
+        def getAddress()
+            return self.address
+
+        def getCity()
+            return self.city
+
+        def getPostalCode()
+            return self.postalcode
+
+        def getLongitude()
+            return self.longitude
+
+        def getLatitude()
+            return self.latitude
+
+        def getName()
+            return self.name
+
+        def getType()
+            return self.type
+
+
+
