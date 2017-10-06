@@ -21,3 +21,19 @@ for sub1 in filtered1:
             print(sub2.text)
     print("------------")
 
+class Bin:
+	__company = ""
+	__address = ""
+	__city = ""
+	__postalCode = ""
+	__longitude = ""
+	__latitude = ""
+	__name =""
+
+	def __init__(self, company, address, city, postalCode, longitude, latitude, name):
+		self.company = company
+		self.address = address
+		self.city = city
+		self.postalCode = postalCode
+		self.longitude = longitude
+		self.name = name
