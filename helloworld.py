@@ -62,5 +62,5 @@ class Bin:
         def getType()
             return self.type
 
-
-
+        def toString()
+            return self.company + "is at" + self.address + ", " + self.city
