@@ -7,7 +7,7 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-from bin.py import Bin
+from bin import Bin
 
 
 #Salvation Army Thrift Store
@@ -23,9 +23,24 @@ filtered1 = soup1.find_all("tr")
 '''prints out all the addresses stored
 in the table on URL1'''
 
-for sub1 in filtered1:
-    inter = sub1.find_all("span")
-    for sub2 in inter:
-        if(len(sub2.text)>2):
-            print(sub2.text)
-    print("------------")
+list = []
+
+for td in filtered1:
+	inter = td.find_all("span")
+	count = 0
+	addBin = Bin("", "", "", "", "", "", "")
+	while (count <= 3):
+		value = inter[count].text
+		if(count == 0):
+			addBin.name = value
+		elif (count == 1):
+			addBin.company = value
+		elif (count == 2):
+			addBin.address = value
+		else:
+			addBin.city = value
+		count += 1
+	list.append(addBin)
+
+for item in list:
+	print(item)
