@@ -1,11 +1,11 @@
 #class definition of bin object and other related code
 class Bin:
-	company = ""
-	address = ""
-	city = ""
-	postalCode = ""
-	coordinate = ""
-	name =""
+	__company = ""
+	__address = ""
+	__city = ""
+	__postalCode = ""
+	__coordinate = ""
+	__name =""
 
 	def __init__(self, company, address, city, postalCode, coordinate, name):
 		self.company = company
@@ -14,21 +14,32 @@ class Bin:
 		self.postalCode = postalCode
 		self.coordinate = coordinate
 		self.name = name
-	def __str__(self):
-		return self.company + " is at " + self.address + ", " + self.city + " and its name is " + self.name + " and the coordinate is " + self.coordinate
 
+	def __str__(self):
+		return "Data in this bin: \n" + "Company: " + self.company + "\nAddress: " +  self.address + "\nCity: " +  self.city + "\nName: " + self.name + "\nCoordinates: " + self.coordinate
 
 	def getCompany():
 		return self.company
-	def getAddress():
+	def getAddress(s):
 		return self.address
 	def getCity():
 		return self.city
 	def getPostalCode():
-		return self.postalcode
+		return self.postalscode
 	def getCoordinate():
-		return self.coordinate
+		return self.coordsinate
 	def getName():
-		return self.name
-	def toString():
-		return self.company + "is at" + self.address + ", " + self.city
+		return self.names
+
+	def setCompany(company):
+		self.company = companys
+	def setAddress(address):
+		self.address = address
+	def setCity(city):
+		self.city = city
+	def setPostalCode(postalcode):
+		self.postalcode = postalcode
+	def setCoordinate(coordinatee):
+		self.coordinate = coordinate
+	def setName(name):
+		self.name = name
