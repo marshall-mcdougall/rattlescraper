@@ -4,19 +4,18 @@ class Bin:
 	address = ""
 	city = ""
 	postalCode = ""
-	longitude = ""
-	latitude = ""
+	coordinate = ""
 	name =""
 
-	def __init__(self, company, address, city, postalCode, longitude, latitude, name):
+	def __init__(self, company, address, city, postalCode, coordinate, name):
 		self.company = company
 		self.address = address
 		self.city = city
 		self.postalCode = postalCode
-		self.longitude = longitude
+		self.coordinate = coordinate
 		self.name = name
 	def __str__(self):
-		return self.company + "is at" + self.address + ", " + self.city + " and its name is " + self.name
+		return self.company + " is at " + self.address + ", " + self.city + " and its name is " + self.name + " and the coordinate is " + self.coordinate
 
 
 	def getCompany():
@@ -27,10 +26,8 @@ class Bin:
 		return self.city
 	def getPostalCode():
 		return self.postalcode
-	def getLongitude():
-		return self.longitude
-	def getLatitude():
-		return self.latitude
+	def getCoordinate():
+		return self.coordinate
 	def getName():
 		return self.name
 	def toString():
