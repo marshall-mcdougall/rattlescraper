@@ -1,11 +1,11 @@
 #class definition of bin object and other related code
 class Bin:
-	__company = ""
-	__address = ""
-	__city = ""
-	__postalCode = ""
-	__coordinate = ""
-	__name =""
+	company = ""
+	address = ""
+	city = ""
+	postalCode = ""
+	coordinate = ""
+	name =""
 
 	def __init__(self, company, address, city, postalCode, coordinate, name):
 		self.company = company
@@ -18,18 +18,20 @@ class Bin:
 	def __str__(self):
 		return "Data in this bin: \n" + "Company: " + self.company + "\nAddress: " +  self.address + "\nCity: " +  self.city + "\nName: " + self.name + "\nCoordinates: " + self.coordinate
 
-	def getCompany():
+	def getCompany(self):
 		return self.company
-	def getAddress(s):
-		return self.address
-	def getCity():
+	def getAddress(self):
+		return (self.address + self.city + "British Columbia, Canada")
+	def getCity(self):
 		return self.city
-	def getPostalCode():
+	def getPostalCode(self):
 		return self.postalscode
-	def getCoordinate():
-		return self.coordsinate
-	def getName():
+	def getCoordinate(self):
+		return self.coordinate
+	def getName(self):
 		return self.names
+	def getContents(self):
+		return self.company + self.address + self.city + self.postalCode + self.coordinate + self.name
 
 	def setCompany(company):
 		self.company = companys

@@ -4,23 +4,23 @@
 #get data
 #misc scraper
 
+import googlemaps
 import requests
 import json
 from bs4 import BeautifulSoup
 from bin import Bin
+
+
+googleApiKey = "AIzaSyCr90UZMD3fl6SLE7cHIDvWF4yofQdWIgk"
+gmaps = googlemaps.Client(key=googleApiKey)
+
 
 #Salvation Army Thrift Store
 url1 = "https://www.thriftstore.ca/british-columbia/drop-bin-locations"
 r1 = requests.get(url1)
 
 soup1 = BeautifulSoup(r1.content,"lxml")
-soup1.prettify();
-
 filtered1 = soup1.find_all("tr")
-
-
-'''prints out all the addresses stored
-in the table on URL1'''
 
 list = []
 
@@ -40,6 +40,8 @@ for td in filtered1:
 			addBin.city = value
 		count += 1
 	list.append(addBin)
+
+
 
 #Inclusion BC & CPABC Clothing
 url2 = "http://www.google.com/maps/d/kml?mid=1kqVfqYiPtnqrO8L5zC_yVkAiwB0&forcekml=1"
@@ -62,9 +64,47 @@ for item in filtered2:
 for item in filtered2:
 	addBin = Bin("", "", "", "", "", "")
 	addBin.address = item.find_all("name")[0].text.strip()
-	addBin.setCoordinate = item.find_all("coordinates")[0].text.strip()
+	addBin.coordinate = item.find_all("coordinates")[0].text.strip()
 	list.append(addBin)
 
+
+for item in list:
+	if item.address:
+		list.remove(item)
+
+
+
+#Diabetes Canada
+url1 = "http://www.diabetes.ca/dropBoxes/phpsqlsearch_genxml.php?&lat=49.2057&lng=-122.9110&radius=50"
+r1 = requests.get(url1)
+
+soup1  = BeautifulSoup(r1.content,"lxml")
+
+filtered = soup1.find_all("marker",{"type":"Drop Box"})
+
+for item in filtered:
+    print(item['address'])
+
+
+
+#geoencoding
+for item in list:
+	if item.getCoordinate():
+		coordinateRaw = item.getCoordinate()
+		print(coordinateRaw)
+		coordinate = coordinateRaw.split(",")
+		reverse_geocode_result = gmaps.reverse_geocode((coordinate[1],coordinate[0]))
+		print(reverse_geocode_result[0]['formatted_address'])
+
+
+	elif item.getAddress():
+		address = item.getAddress()
+		geocode_result = gmaps.geocode(address)
+		item.coordinate = reverse_geocode_result[0]['geometry']['location']
+		print(geocode_result[0]['formatted_address'])
+
+
+#print all bin objects
 for item in list:
 	print("-----------------------")
 	print(item)
